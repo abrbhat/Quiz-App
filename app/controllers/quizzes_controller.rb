@@ -10,6 +10,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
+    @questions = @quiz.questions
   end
 
   # GET /quizzes/new
@@ -69,6 +70,7 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:title, :view_count)
+      params.require(:quiz).permit(:title, :view_count, questions_attributes: [:option])
+      params.require(:quiz).permit(:title, :view_count,questions: [ :title ])
     end
 end
