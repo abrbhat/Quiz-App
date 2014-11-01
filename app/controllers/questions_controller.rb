@@ -14,11 +14,13 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   def new
+    @quizzes = Quiz.all
     @question = Question.new
   end
 
   # GET /questions/1/edit
   def edit
+    @quizzes = Quiz.all
   end
 
   # POST /questions

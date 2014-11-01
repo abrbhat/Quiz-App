@@ -7,13 +7,17 @@
 
 <p>
   <strong>Question:</strong>
-  <%= @option.question %>
+  <%= @option.question.title %>
 </p>
 
 <p>
   <strong>Selection count:</strong>
   <%= @option.selection_count %>
 </p>
+
+<p>
+	<%= image_tag @option.content.url(:thumb) %>
+</p>	
 
 <%= link_to 'Edit', edit_option_path(@option) %> |
 <%= link_to 'Back', options_path %>
