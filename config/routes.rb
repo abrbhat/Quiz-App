@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :results
+
   resources :viewers
 
   resources :options

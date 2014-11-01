@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101165217) do
+ActiveRecord::Schema.define(version: 20141101205109) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20141101165217) do
     t.string   "content_content_type"
     t.integer  "content_file_size"
     t.datetime "content_updated_at"
+    t.integer  "result_id"
   end
 
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
@@ -45,6 +46,19 @@ ActiveRecord::Schema.define(version: 20141101165217) do
     t.integer  "view_count"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "results", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "title"
+    t.text     "description"
+    t.integer  "viewings"
+    t.integer  "quiz_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "viewers", force: true do |t|
