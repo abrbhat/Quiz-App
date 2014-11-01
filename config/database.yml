@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: fashitwebapp_production
-  username: fashitwebapp
-  password: <%= ENV['FASHITWEBAPP_DATABASE_PASSWORD'] %>
+
+  
