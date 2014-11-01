@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    @quizzes = Quizzes.all
+    @quizzes = Quiz.all
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -40,7 +40,7 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    @quizzes = Quizzes.all
+    @quizzes = Quiz.all
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
