@@ -16,10 +16,12 @@ class OptionsController < ApplicationController
   def new
     @option = Option.new
     @questions = Question.all
+    @results = Result.all
   end
 
   # GET /options/1/edit
   def edit
+    @results = Result.all
     @questions = Question.all
   end
 
@@ -28,6 +30,7 @@ class OptionsController < ApplicationController
   def create
     @option = Option.new(option_params)
     @questions = Question.all
+    @results = Result.all
     respond_to do |format|
       if @option.save
         format.html { redirect_to @option, notice: 'Option was successfully created.' }
@@ -72,6 +75,6 @@ class OptionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def option_params
-      params.require(:option).permit(:title, :question_id, :selection_count, :content)
+      params.require(:option).permit(:title, :question_id, :selection_count, :content, :result_id)
     end
 end

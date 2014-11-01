@@ -20,6 +20,12 @@
       <option value="<%= question.id %>"><%= question.title %></option>
     <% end %>
   </select>
+
+  <select name="option[result_id]">
+    <% @results.each do |result|%>
+      <option value="<%= result.id %>"><%= result.title %></option>
+    <% end %>
+  </select>
   <br>
   <div class="field">
     <%= f.file_field :content %>

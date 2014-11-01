@@ -7,7 +7,16 @@
 
 <p>
   <strong>Question:</strong>
-  <%= @option.question.title %>
+  <% if @option.question.present? %>
+  	<%= @option.question.title %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Result:</strong>
+  <% if @option.result.present? %>
+  	<%= @option.result.title %>
+  <% end %>
 </p>
 
 <p>
@@ -16,7 +25,9 @@
 </p>
 
 <p>
-	<%= image_tag @option.content.url(:thumb) %>
+	<% if @option.content.present? %>
+		<%= image_tag @option.content.url(:thumb) %>
+	<% end %>
 </p>	
 
 <%= link_to 'Edit', edit_option_path(@option) %> |

@@ -10,22 +10,25 @@ class ResultsController < ApplicationController
   # GET /results/1
   # GET /results/1.json
   def show
+    @quizzes = Quiz.all
   end
 
   # GET /results/new
   def new
+    @quizzes = Quiz.all
     @result = Result.new
   end
 
   # GET /results/1/edit
   def edit
+    @quizzes = Quiz.all
   end
 
   # POST /results
   # POST /results.json
   def create
     @result = Result.new(result_params)
-
+    @quizzes = Quiz.all
     respond_to do |format|
       if @result.save
         format.html { redirect_to @result, notice: 'Result was successfully created.' }
@@ -40,6 +43,7 @@ class ResultsController < ApplicationController
   # PATCH/PUT /results/1
   # PATCH/PUT /results/1.json
   def update
+    @quizzes = Quiz.all
     respond_to do |format|
       if @result.update(result_params)
         format.html { redirect_to @result, notice: 'Result was successfully updated.' }
@@ -69,6 +73,6 @@ class ResultsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def result_params
-      params[:result]
+      params.require(:result).permit(:title, :description, :viewings, :image, :quiz_id)
     end
 end

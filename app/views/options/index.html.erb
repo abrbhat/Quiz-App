@@ -6,6 +6,7 @@
       <th>Title</th>
       <th>Question</th>
       <th>Content</th>
+      <th>Result</th>
       <th>Selection count</th>
       <th colspan="3"></th>
     </tr>
@@ -15,10 +16,21 @@
     <% @options.each do |option| %>
       <tr>
         <td><%= option.title %></td>
-        <td><%= option.question.title %></td>
         <td>
-          <%= image_tag option.content.url(:thumb) %>
+          <% if option.question.present? %>
+            <%= option.question.title %>
+          <% end %>
+        </td>
+        <td>
+          <% if option.content.present? %>
+            <%= image_tag option.content.url(:thumb) %>
+          <% end %>
         </td> 
+        <td>
+          <% if option.result.present? %>
+            <%= option.result.title %>
+          <% end %>
+        </td>
         <td><%= option.selection_count %></td>
         <td><%= link_to 'Show', option %></td>
         <td><%= link_to 'Edit', edit_option_path(option) %></td>
