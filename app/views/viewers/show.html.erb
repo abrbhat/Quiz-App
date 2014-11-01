@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @viewer.name %>
+</p>
+
+<p>
+  <strong>Quizzes viewed:</strong>
+  <%= @viewer.quizzes_viewed %>
+</p>
+
+<p>
+  <strong>Questions viewed:</strong>
+  <%= @viewer.questions_viewed %>
+</p>
+
+<%= link_to 'Edit', edit_viewer_path(@viewer) %> |
+<%= link_to 'Back', viewers_path %>

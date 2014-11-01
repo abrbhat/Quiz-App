@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resources :viewers
+
+  resources :options
+
+  resources :questions
+
+  resources :quizzes
+
   root 'welcome#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

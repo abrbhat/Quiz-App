@@ -1,0 +1,29 @@
+<%= form_for(@viewer) do |f| %>
+  <% if @viewer.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@viewer.errors.count, "error") %> prohibited this viewer from being saved:</h2>
+
+      <ul>
+      <% @viewer.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_area :name %>
+  </div>
+  <div class="field">
+    <%= f.label :quizzes_viewed %><br>
+    <%= f.number_field :quizzes_viewed %>
+  </div>
+  <div class="field">
+    <%= f.label :questions_viewed %><br>
+    <%= f.number_field :questions_viewed %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

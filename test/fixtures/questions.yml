@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyText
+  quiz_id: 
+  view_count: 1
+
+two:
+  title: MyText
+  quiz_id: 
+  view_count: 1
