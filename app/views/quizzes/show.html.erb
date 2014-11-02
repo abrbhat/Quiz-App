@@ -1,5 +1,21 @@
 <p id="notice"><%= notice %></p>
 
+<p>
+	<% if @quiz.image.present? %>
+		<%= image_tag @quiz.image.url(:thumb) %>
+	<% end %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @quiz.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @quiz.description %>
+</p>
+
 <% if @questions.present? %>	
 	<% @questions.each do |question| %>
 		<div class = "question-container">
