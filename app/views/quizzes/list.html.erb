@@ -1,0 +1,23 @@
+<div class="main-quiz-list-container">
+	<% @quizzes.each do |quiz|%>
+		<a href = "/quizzes/<%= quiz.id %>">
+			<div class = "listed-quiz-container">
+				<div class = "listed-quiz-image">
+					<%= image_tag quiz.image.url(:medium) , size: "260x195" %>
+				</div>
+				<div class = "listed-quiz-text" >
+					<div class="centering-table">
+	   					<div class="centering-table-cell">   	
+		   					<div class = "listed-quiz-title">
+								<%= quiz.title %>
+							</div>
+							<div class = "listed-quiz-description">
+								<%= quiz.description %>
+							</div>					
+	    	  			</div>
+	  				</div>				
+				</div>
+			</div>
+		</a>
+	<% end %>
+</div>

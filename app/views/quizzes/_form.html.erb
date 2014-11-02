@@ -13,12 +13,17 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_area :title %>
+    <%= f.text_area :title, :cols => "60", :rows => "1" %>
   </div>
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :cols => "60", :rows => "4" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :result_prefix %><br>
+    <%= f.text_field :result_prefix %>
   </div>
 
   <div class="field">

@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_area :title %>
+    <%= f.text_area :title, :cols => "60", :rows => "1" %>
   </div>
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, :cols => "60", :rows => "4" %>
   </div>
   <select name="result[quiz_id]">
     <% @quizzes.each do |quiz|%>

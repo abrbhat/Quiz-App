@@ -7,9 +7,22 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class = "container">
-	<%= yield %>
-</div>
+	<div class = "site-header-container">
+		<div class = "site-header">
+			<div class = "site-title-container">
+				<div class = "site-title">QFash</div>
+			</div>
+			<div class = "greeting">
+				<div class = "named-greeting">
+					Hi, <div id = "name"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class = "site-content-container">
+		<%= yield %>
+	</div>
 
 </body>
 </html>

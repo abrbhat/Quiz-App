@@ -1,6 +1,9 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
 
+  def list
+    @quizzes = Quiz.all
+  end
   # GET /quizzes
   # GET /quizzes.json
   def index
@@ -12,7 +15,7 @@ class QuizzesController < ApplicationController
   def show
     @questions = @quiz.questions
     @results = @quiz.results
-  end
+  end 
 
   # GET /quizzes/new
   def new
@@ -71,6 +74,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:title, :view_count, :image, :description)
+      params.require(:quiz).permit(:title, :view_count, :image, :description, :result_prefix)
     end
 end

@@ -1,56 +1,55 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-	<% if @quiz.image.present? %>
-		<%= image_tag @quiz.image.url(:thumb) %>
-	<% end %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @quiz.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @quiz.description %>
-</p>
-
-<% if @questions.present? %>	
-	<% @questions.each do |question| %>
-		<div class = "question-container">
-			<div class = "question-title">
-				<%= question.title %>
-			</div>
-				<% if question.options.present? %>
-					<% question.options.each do |option| %>
-						<% if option.content.present? %>
-							<div class = "option-content-container">
-								<%= image_tag option.content.url(:medium) %>
+<div class = "quiz-container">
+	<div class = "quiz-title-container">
+		<%= @quiz.title %>
+	</div>
+	<% if @questions.present? %>	
+		<div class = question-list-container>
+			<% @questions.each do |question| %>
+				<div class = "question-container">
+					<div class = "question-title">
+						<%= question.title %>
+					</div>
+						<% if question.options.present? %>
+							<div class = "option-list-container">
+								<% question.options.each do |option| %>
+									<% if option.content.present? %>
+										<div class = "option-container">
+											<%= image_tag option.content.url(:medium), size: "150x200", alt: option.title %>
+										</div>
+									<% end %>
+								<% end %>
 							</div>
 						<% end %>
-					<% end %>
-				<% end %>
-			</div>
+					</div>
+				</div>
+			<% end %>
 		</div>
 	<% end %>
-<% end %>
-
-Result:
-<% if @results.present? %>
-	<% @results.each do |result| %>
-		<div class = "result-container">
-			<div class = "result-image">
-				<%= image_tag result.image.url(:medium) %>
+	<% if @results.present? %>				
+		<% @results.each do |result| %>
+			<div class = "result-container">
+				<div class = "result-row">
+					<div class = "result-title">
+							<%= @quiz.result_prefix %> <%= result.title %>
+					</div>
+				</div>
+				<div class = "result-row">
+					<div class = "result-image">
+						<%= image_tag result.image.url(:medium), size: "180x240" %>
+					</div>					
+					<div class = "result-description">
+						<div class="centering-table">
+		   					<div class="centering-table-cell">  	
+								<%= result.description %>				   							
+		    	  			</div>
+		  				</div>	
+					</div>
+				</div>
 			</div>
-			<div class = "result-title">
-				<%= result.title %>
-			</div>
-			<div class = "result-description">
-				<%= result.description %>
-			</div>
-		</div>
+		<% end %>			
 	<% end %>
-<% end %>
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
+	<div class="back-button-container">
+		<%= link_to 'Back', root_url, class:"back-button" %>	
+	</div>
+</div>
