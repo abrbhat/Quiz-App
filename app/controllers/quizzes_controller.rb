@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!, only: [:show, :list]
   def list
     @quizzes = Quiz.all
   end

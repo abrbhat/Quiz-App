@@ -15,8 +15,12 @@
 			<div class = "greeting">
 				<div class = "named-greeting">
 					Hi, <div id = "name"></div>
+					<% if user_signed_in? %>
+						<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
+					<% end %>
 				</div>
 			</div>
+			
 		</div>
 	</div>
 
