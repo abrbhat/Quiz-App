@@ -40,6 +40,26 @@ class ResultsController < ApplicationController
     end
   end
 
+  def evaluate
+    selected_options = params[:option_selected]
+    quiz = Quiz.find(params[:quiz_id])
+    results = quiz.results    
+    result_count = {}
+    results.each do |result|
+      result_count[result.id] = 0
+    end
+    selected_options.each do |question_id,option_id|
+      selected_option = Option.find(option_id)
+      result_count[selected_option.result_id] = result_count[selected_option.result_id] + 1
+    end
+    result = Result.find(result_count.max_by{|k,v| v}.first)
+    result_to_return = {"title"=> result.title,
+                        "result_prefix" => quiz.result_prefix,
+                        "description"=> result.description,
+                        "image_url"=> result.image.url(:medium)}
+    render json: result_to_return
+  end
+
   # PATCH/PUT /results/1
   # PATCH/PUT /results/1.json
   def update

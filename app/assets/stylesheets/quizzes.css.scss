@@ -90,7 +90,7 @@ body{
 .option-container{
 	@extend .col-md-4;
 }
-.result-container{
+#result-container{
 	@extend .container-fluid;
 	width:40%;
 	text-align:center;
@@ -99,15 +99,16 @@ body{
 .result-row{
 	@extend .row;
 }
-.result-image{
+#result-image-container{
 	@extend .col-md-5;
 }
-.result-title{
+#result-title-container{
 	@extend .col-md-12;
 	font-size: 25px;	
 	margin-bottom: 5px;
 }
-.result-description{
+
+#result-description-container{
 	@extend .col-md-7;
 	height: 240px;
 }

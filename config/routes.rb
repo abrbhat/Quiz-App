@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :results
+  resources :results do
+    get 'evaluate', on: :collection
+  end
 
   resources :viewers
 

@@ -4,51 +4,55 @@
 		<%= @quiz.title %>
 	</div>
 	<% if @questions.present? %>	
-		<div class = question-list-container>
-			<% @questions.each do |question| %>
-				<div class = "question-container">
-					<div class = "question-title">
-						<%= question.title %>
-					</div>
+		<%= form_tag({controller:"results",action:"evaluate"}, method: "get", id: "quiz-form") do %>	
+			<input type = "hidden" name = "quiz_id" value = "<%= @quiz.id %>">
+			<div class = question-list-container>
+				<% @questions.each do |question| %>
+					<div class = "question-container">
+						<div class = "question-title">
+							<%= question.title %>
+						</div>
 						<% if question.options.present? %>
 							<div class = "option-list-container">
 								<% question.options.each do |option| %>
 									<% if option.content.present? %>
 										<div class = "option-container">
 											<%= image_tag option.content.url(:medium), size: "150x200", alt: option.title %>
+											<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>">
 										</div>
 									<% end %>
 								<% end %>
 							</div>
 						<% end %>
 					</div>
-				</div>
-			<% end %>
-		</div>
-	<% end %>
-	<% if @results.present? %>				
-		<% @results.each do |result| %>
-			<div class = "result-container">
-				<div class = "result-row">
-					<div class = "result-title">
-							<%= @quiz.result_prefix %> <%= result.title %>
-					</div>
-				</div>
-				<div class = "result-row">
-					<div class = "result-image">
-						<%= image_tag result.image.url(:medium), size: "180x240" %>
-					</div>					
-					<div class = "result-description">
-						<div class="centering-table">
-		   					<div class="centering-table-cell">  	
-								<%= result.description %>				   							
-		    	  			</div>
-		  				</div>	
-					</div>
-				</div>
+				<% end %>
 			</div>
-		<% end %>			
+			<div class="quiz-submit-button-container">
+				<input class="quiz-submit-button" name="commit" type="submit" value="Submit" />
+			</div>
+		<% end %>
 	<% end %>
+
+	<div id = "result-container">
+		<div class = "result-row">
+			<div id = "result-title-container">
+				<div id = "result-title"></div>
+			</div>
+		</div>
+		<div class = "result-row">
+			<div id = "result-image-container">
+				<image id = "result-image" height="240" width="180">
+			</div>					
+			<div id = "result-description-container">
+				<div class="centering-table">
+   					<div class="centering-table-cell">  	
+   						<div id="result-description"></div>			   							
+    	  			</div>
+  				</div>	
+			</div>
+		</div>
+	</div>
+	
 	<div class="back-button-container">
 		<%= link_to 'Back', root_url, class:"back-button" %>	
 	</div>
