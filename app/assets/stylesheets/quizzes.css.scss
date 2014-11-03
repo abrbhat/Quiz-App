@@ -24,8 +24,8 @@ body{
 	
 }
 .greeting{
-	@extend .col-md-3;
-	@extend .col-md-offset-6;
+	@extend .col-md-1;
+	@extend .col-md-offset-8;
 }
 .named-greeting{
 	
@@ -157,4 +157,11 @@ body{
 .list-header-button-container{
 	@extend .col-md-3;	
 }
-
+.navigation-button{
+	@extend .btn;
+	@extend .btn-default;
+}
+.navbar{
+	text-align:center;
+	clear:both;
+}

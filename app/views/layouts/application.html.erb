@@ -14,17 +14,21 @@
 			</div>
 			<div class = "greeting">
 				<div class = "named-greeting">
-					Hi, <div id = "name"></div>
-					<% if user_signed_in? %>
-						<%= link_to "Sign Out", destroy_user_session_path, method: :delete %>
-					<% end %>
+					Hi, <div id = "name"></div> <% if user_signed_in? %><%= link_to "Sign Out", destroy_user_session_path, method: :delete %><% end %>
 				</div>
 			</div>
 			
-		</div>
+		</div>		
 	</div>
-
 	<div class = "site-content-container">
+		<% if user_signed_in? %>
+				<div class = "navbar">			
+					<%= link_to "Quizzes", quizzes_path, class: "navigation-button" %>
+					<%= link_to "Questions" ,questions_path, class: "navigation-button" %>
+					<%= link_to "Options", options_path, class: "navigation-button" %>
+					<%= link_to "Results", results_path, class: "navigation-button" %>
+				</div>
+			<% end %>			
 		<%= yield %>
 	</div>
 
