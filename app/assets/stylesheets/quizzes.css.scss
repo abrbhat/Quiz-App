@@ -35,6 +35,7 @@ body{
 }
 .main-list-quiz-container{
 	@extend .container-fluid;
+	text-align: center;
 }
 .listed-quiz-container{
 	@extend .row;
