@@ -22,7 +22,7 @@
   </div>
   <select name="result[quiz_id]">
     <% @quizzes.each do |quiz|%>
-      <option value="<%= quiz.id %>"><%= quiz.title %></option>
+      <option value="<%= quiz.id %>" <%= "selected" if quiz.id == @result.quiz_id %>><%= quiz.title %></option>
     <% end %>
   </select>
   <br>

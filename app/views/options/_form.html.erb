@@ -18,13 +18,13 @@
 
   <select name="option[question_id]">
     <% @questions.each do |question|%>
-      <option value="<%= question.id %>"><%= question.title %></option>
+      <option value="<%= question.id %>" <%= "selected" if question.id == @option.question_id %>><%= question.title %></option>
     <% end %>
   </select>
 
   <select name="option[result_id]">
     <% @results.each do |result|%>
-      <option value="<%= result.id %>"><%= result.title %></option>
+      <option value="<%= result.id %>" <%= "selected" if result.id == @option.result_id %>><%= result.title %></option>
     <% end %>
   </select>
   <br>
