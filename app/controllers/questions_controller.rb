@@ -31,11 +31,11 @@ class QuestionsController < ApplicationController
     @quizzes = Quiz.all
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question, notice: 'Question was successfully created.' }
+        format.html { redirect_to questions_path, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
+        format.json { render json: questions_path.errors, status: :unprocessable_entity }
       end
     end
   end

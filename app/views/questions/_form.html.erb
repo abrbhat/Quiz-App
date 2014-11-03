@@ -13,15 +13,15 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_area :title, :cols => "60", :rows => "1" %>
+    <%= f.text_area :title, :cols => "60", :rows => "1", class: "input-text-area" %>
   </div>
-  <select name="question[quiz_id]">
+  <select name="question[quiz_id]" class="input-select">
     <% @quizzes.each do |quiz|%>
       <option value="<%= quiz.id %>" <%= "selected" if quiz.id == @question.quiz_id %>><%= quiz.title %></option>
     <% end %>
   </select>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:"edit-form-submit-button" %>
   </div>
 <% end %>

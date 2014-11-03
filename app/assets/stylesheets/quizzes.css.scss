@@ -119,3 +119,40 @@ body{
 	text-align:center;
 	margin: 20px;
 }
+.field{
+	@extend .form-group;
+}
+.input-text-area{
+	@extend .form-control;
+}
+.input-text-field{
+	@extend .form-control;
+}
+.input-image{
+	@extend .form-control;
+}
+.input-select{
+	@extend .form-control;
+}
+.input-number{
+	@extend .form-control;
+}
+.edit-form-submit-button{
+	@extend .btn;
+	@extend .btn-success;
+}
+.create-new-instance-button{
+	@extend .btn;
+	@extend .btn-info;
+	color: #FFF !important; 
+}
+.list-header-row{
+	@extend .row;
+}
+.list-header-text{
+	@extend .col-md-9;	
+}
+.list-header-button-container{
+	@extend .col-md-3;	
+}
+

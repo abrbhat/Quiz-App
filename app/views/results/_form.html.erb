@@ -13,25 +13,29 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_area :title, :cols => "60", :rows => "1" %>
+    <%= f.text_area :title, :cols => "60", :rows => "1", class: "input-text-area" %>
   </div>
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description, :cols => "60", :rows => "4" %>
+    <%= f.text_area :description, :cols => "60", :rows => "4", class: "input-text-area" %>
   </div>
-  <select name="result[quiz_id]">
+  <select name="result[quiz_id]" class="input-select">
     <% @quizzes.each do |quiz|%>
       <option value="<%= quiz.id %>" <%= "selected" if quiz.id == @result.quiz_id %>><%= quiz.title %></option>
     <% end %>
   </select>
   <br>
-  
+
+  <div>
+    <%= image_tag @result.image.url(:medium)%>
+  </div>
+
   <div class="field">
     <%= f.file_field :image %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:"edit-form-submit-button" %>
   </div>
 <% end %>

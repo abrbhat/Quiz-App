@@ -13,16 +13,16 @@
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :title, :cols => "10", :rows => "1" %>
+    <%= f.text_area :title, :cols => "10", :rows => "1", class: "input-text-area" %>
   </div>
 
-  <select name="option[question_id]">
+  <select name="option[question_id]" class="input-select">
     <% @questions.each do |question|%>
       <option value="<%= question.id %>" <%= "selected" if question.id == @option.question_id %>><%= question.title %></option>
     <% end %>
   </select>
 
-  <select name="option[result_id]">
+  <select name="option[result_id]" class="input-select">
     <% @results.each do |result|%>
       <option value="<%= result.id %>" <%= "selected" if result.id == @option.result_id %>><%= result.title %></option>
     <% end %>
@@ -33,6 +33,6 @@
   </div>
   
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:"edit-form-submit-button" %>
   </div>
 <% end %>

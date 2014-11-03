@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_area :title, :cols => "60", :rows => "1" %>
+    <%= f.text_area :title, :cols => "60", :rows => "1", class: "input-text-area" %>
   </div>
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_area :description, :cols => "60", :rows => "4" %>
+    <%= f.text_area :description, :cols => "60", :rows => "4", class: "input-text-area" %>
   </div>
 
   <div class="field">
     <%= f.label :result_prefix %><br>
-    <%= f.text_field :result_prefix %>
+    <%= f.text_field :result_prefix, class: "input-text-field" %>
   </div>
 
   <div class="field">
     <%= f.label :view_count %><br>
-    <%= f.number_field :view_count %>
+    <%= f.number_field :view_count, class: "input-number" %>
   </div>
 
   <div class="field">
@@ -36,6 +36,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class:"edit-form-submit-button" %>
   </div>
 <% end %>

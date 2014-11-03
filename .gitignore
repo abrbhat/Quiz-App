@@ -14,3 +14,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+#Ignore photos
+/public/system/options/*
+/public/system/results/*
+/public/system/quizzes/*

@@ -1,6 +1,8 @@
 <h1>Listing questions</h1>
 
-<table>
+<%= link_to 'New Question', new_question_path, class: "create-new-instance-button" %>
+
+<table class="table">
   <thead>
     <tr>
       <th>Title</th>
@@ -26,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>
+
