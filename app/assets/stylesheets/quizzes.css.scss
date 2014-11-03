@@ -100,7 +100,7 @@ body{
 	@extend .row;
 }
 .result-image{
-	@extend .col-md-3;
+	@extend .col-md-4;
 }
 .result-title{
 	@extend .col-md-12;
@@ -108,7 +108,7 @@ body{
 	margin-bottom: 5px;
 }
 .result-description{
-	@extend .col-md-9;
+	@extend .col-md-8;
 	height: 240px;
 }
 .back-button{
