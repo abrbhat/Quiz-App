@@ -24,6 +24,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem "paperclip", "3.4.2"
+gem 'aws-sdk'
 
 gem 'bootstrap-sass', '~> 3.2.0'
 
