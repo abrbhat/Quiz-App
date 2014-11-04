@@ -8,7 +8,7 @@ $(document).ready(function() {
 			success: function(data){	
 				$("#result-title").html(data["result_prefix"]+" "+data["title"]);
 				$("#result-description").html(data["description"]);
-				$("#result-image-container").html("<img src = "+ data["image_url"] +" height='240' width='180' >");
+				$("#result-image-container").html("<img src = "+ data["image_url"] +">");
 			},
 	    }); 
 	    // return false to prevent normal browser submit and page navigation 

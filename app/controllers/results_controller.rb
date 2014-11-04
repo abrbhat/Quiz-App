@@ -56,7 +56,7 @@ class ResultsController < ApplicationController
     result_to_return = {"title"=> result.title,
                         "result_prefix" => quiz.result_prefix,
                         "description"=> result.description,
-                        "image_url"=> result.image.url(:medium)}
+                        "image_url"=> result.image.url(:small)}
     render json: result_to_return
   end
 
