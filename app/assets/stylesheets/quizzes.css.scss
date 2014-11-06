@@ -167,6 +167,7 @@ body{
 .option-card{
 	@extend .card-shadow-light;
 	display: inline-block;
+	cursor: pointer;
 }
 .option-selected-bar-holder{
 	position:absolute;
