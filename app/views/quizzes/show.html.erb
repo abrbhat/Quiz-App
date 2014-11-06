@@ -17,8 +17,15 @@
 								<% question.options.each do |option| %>
 									<% if option.content.present? %>
 										<div class = "option-container">
-											<%= image_tag option.content.url(:medium), alt: option.title, class: "option-image" %>
-											<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>">
+											<div class = "option-card">
+												<div class = "curtain-container">
+													<div class = "option-selected-bar-holder"></div>
+													<%= image_tag option.content.url(:medium), alt: option.title, class: "option-image" %>
+													<div class = "curtain"></div>
+													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio">
+													<div class = "option-selected-bar"></div>										
+												</div>
+											</div>
 										</div>
 									<% end %>
 								<% end %>
