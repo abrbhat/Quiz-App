@@ -7,6 +7,7 @@ $(document).ready(function() {
 				alert('Oopsy!'); 				
 			},
 			success: function(data){	
+				$("#result-container").show();
 				$("#result-title").html(data["result_prefix"]+" "+data["title"]);
 				$("#result-description").html(data["description"]);
 				$("#result-image-container").html("<img src = "+ data["image_url"] +">");

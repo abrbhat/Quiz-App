@@ -205,7 +205,7 @@ body{
 }
 .option-selected-bar{
 	position: absolute;	
-	margin-top: 4px;
+	margin-top: 5px;
 	height: 4px;
 	width: 100%;
 	background: rgba(0,0,0,0.3);
@@ -237,12 +237,19 @@ body{
 }
 .option-selector-radio{
 	display:none;
+
 }
-#result-container{
+#result-placeholder{
 	@extend .container-fluid;
-	width:40%;
+	width:50%;
+	height: 350px;
 	text-align:center;
 	margin-top:20px;
+}
+#result-container{
+	display:none;
+	@extend .card-shadow-light;
+	padding: 15px;
 }
 .result-row{
 	@extend .row;
