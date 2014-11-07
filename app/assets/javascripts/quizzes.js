@@ -9,6 +9,7 @@ $(document).ready(function() {
 		var nam, question;
 	    $(':radio').each(function() { // loop through each radio button
 	        nam = $(this).attr('name'); // get the name of its set
+	        $(this).closest('.question-container').css("background-color", "transparent");
 	        if (!$(':radio[name="'+nam+'"]:checked').length) { 
 	            $(this).closest('.question-container').css("background-color", "rgba(255,255,255,0.25)");
 	            if (submitme){

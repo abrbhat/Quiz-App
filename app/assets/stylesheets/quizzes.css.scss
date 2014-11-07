@@ -135,6 +135,9 @@ body{
   overflow: hidden;
   padding-bottom:10px;
 }
+.table{
+	background-color: white;
+}
 .centering-table-cell{
   display: table-cell; 
   vertical-align: middle;
@@ -268,7 +271,7 @@ body{
 }
 #result-container{
 	display:none;
-	@extend .card-shadow-light;
+	@extend .card-shadow;
 	padding: 15px;
 	opacity: 0;
 	background-color: white;
