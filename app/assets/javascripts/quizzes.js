@@ -3,6 +3,33 @@ $(document).ready(function() {
 	$('#quiz-form').submit(function() { 
 	    // submit the form 
 	    $(this).ajaxSubmit({
+			xhr: function()
+			  {
+			    var xhr = new window.XMLHttpRequest();
+			    //Upload progress
+			    xhr.upload.addEventListener("progress", function(evt){
+			      if (evt.lengthComputable) {
+			        var percentComplete = ((evt.loaded / evt.total) * 100).toString();
+			        //Do something with upload progress
+			        $(".progress-bar").data("transitiongoal",percentComplete);
+			        console.log("upload:percentComplete");
+			        console.log(percentComplete);
+			      }
+			    }, false);
+			    //Download progress
+			    xhr.addEventListener("progress", function(evt){
+			      if (evt.lengthComputable) {
+			        var percentComplete = ((evt.loaded / evt.total) * 100).toString();
+			        //Do something with upload progress
+			        $(".progress-bar").attr("data-transitiongoal",percentComplete);
+			        $(".progress-bar").progressbar(); 
+			        //Do something with download progress
+			        console.log($(".progress-bar").data("transitiongoal"));
+			        console.log(percentComplete);
+			      }
+			    }, false);
+			    return xhr;
+			},
 	    	error: function(){
 				alert('Oopsy!'); 				
 			},
@@ -41,4 +68,5 @@ $(document).ready(function() {
 	      	$(this).find('.curtain').stop().fadeTo('slow', 0.1);  
 	   }	
 	});  
+	$('.progress .progress-bar').progressbar(); 
 });

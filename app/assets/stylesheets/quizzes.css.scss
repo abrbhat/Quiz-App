@@ -214,6 +214,7 @@ body{
 }
 .option-image{
 	position:relative;
+	z-index: -3;
 }
 
 .curtain-container{
@@ -268,6 +269,18 @@ body{
 	@extend .col-md-7;
 	height: 240px;
 }
+#quiz-submit-button{
+	@extend .btn;
+	@extend .btn-md;
+	@extend .btn-default;
+}
+#quiz-end-container{
+	width: 50%;
+	margin: 0 auto;
+}
+.progress{
+	margin: 10px;
+}
 .back-button{
 	@extend .btn;
 	@extend .btn-default;
@@ -319,5 +332,12 @@ body{
 .navbar{
 	text-align:center;
 	clear:both;
+}
+.six-sec-ease-in-out {
+    -webkit-transition: width 6s ease-in-out;
+    -moz-transition: width 6s ease-in-out;
+    -ms-transition: width 6s ease-in-out;
+    -o-transition: width 6s ease-in-out;
+    transition: width 6s ease-in-out;
 }
 
