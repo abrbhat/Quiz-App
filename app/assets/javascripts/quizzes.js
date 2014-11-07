@@ -4,53 +4,69 @@ function showMoreQuizzesButton() {
     return null;          
 }
 $(document).ready(function() {
-	var option
-	$('#quiz-form').submit(function() { 
-	    // submit the form 
-	    $(this).ajaxSubmit({
-	    	beforeSend:function(){
-	    		$("#quiz-submit-button").fadeTo("slow",0);
-	    		$("#quiz-submit-button").hide();
-	    		$(".progress").show();
-	    		$(".progress").fadeTo("slow",1);
+	$('#quiz-form').submit(function() {
+		var submitme = true;
+		var nam, question;
+	    $(':radio').each(function() { // loop through each radio button
+	        nam = $(this).attr('name'); // get the name of its set
+	        if (!$(':radio[name="'+nam+'"]:checked').length) { 
+	            $(this).closest('.question-container').css("background-color", "rgba(255,255,255,0.25)");
+	            if (submitme){
+	            	$('html, body').animate({
+				        scrollTop: $(this).closest('.question-container').offset().top
+				    }, 500);
+	            }
+	            submitme = false;
+	        }
+	    });
+	    if (submitme){
+		    $(this).ajaxSubmit({
+		    	beforeSend:function(){
+		    		$("#quiz-submit-button").fadeTo("slow",0);
+		    		$("#quiz-submit-button").hide();
+		    		$(".progress").show();
+		    		$(".progress").fadeTo("slow",1);
+		    	},
+				xhr: function()
+				  {
+				    var xhr = new window.XMLHttpRequest();
+				    //Upload progress
+				    xhr.upload.addEventListener("progress", function(evt){
+				      if (evt.lengthComputable) {
+				        var percentComplete = ((evt.loaded / evt.total) * 100).toString();
+				        //Do something with upload progress
+				        $(".progress-bar").data("transitiongoal",percentComplete);
+				        console.log("upload:percentComplete");
+				        console.log(percentComplete);
+				      }
+				    }, false);
+				    //Download progress
+				    xhr.addEventListener("progress", function(evt){
+				      if (evt.lengthComputable) {
+				        var percentComplete = ((evt.loaded / evt.total) * 100).toString();
+				        //Do something with upload progress
+				        $(".progress-bar").attr("data-transitiongoal",percentComplete);			        
+				        $('.progress-bar').progressbar();
+						//Do something with download progress
+				      }
+				    }, false);
+				    return xhr;
+				},
+		    	error: function(){
+					alert('Oopsy!'); 				
+				},
+				success: function(data){	
 
-	    	},
-			xhr: function()
-			  {
-			    var xhr = new window.XMLHttpRequest();
-			    //Upload progress
-			    xhr.upload.addEventListener("progress", function(evt){
-			      if (evt.lengthComputable) {
-			        var percentComplete = ((evt.loaded / evt.total) * 100).toString();
-			        //Do something with upload progress
-			        $(".progress-bar").data("transitiongoal",percentComplete);
-			        console.log("upload:percentComplete");
-			        console.log(percentComplete);
-			      }
-			    }, false);
-			    //Download progress
-			    xhr.addEventListener("progress", function(evt){
-			      if (evt.lengthComputable) {
-			        var percentComplete = ((evt.loaded / evt.total) * 100).toString();
-			        //Do something with upload progress
-			        $(".progress-bar").attr("data-transitiongoal",percentComplete);			        
-			        $('.progress-bar').progressbar();
-					//Do something with download progress
-			      }
-			    }, false);
-			    return xhr;
-			},
-	    	error: function(){
-				alert('Oopsy!'); 				
-			},
-			success: function(data){	
-
-				$("#result-title").html(data["result_prefix"]+" "+data["title"]);
-				$("#result-description").html(data["description"]);
-				$("#result-image-container").html("<img src = "+ data["image_url"] +">");
-				
-			},
-	    }); 
+					$("#result-title").html(data["result_prefix"]+" "+data["title"]);
+					$("#result-description").html(data["description"]);
+					$("#result-image-container").html("<img src = "+ data["image_url"] +">");
+					
+				},
+		    }); 
+		}
+		else{
+			console.log("ggsdf");
+		}
 	    // return false to prevent normal browser submit and page navigation 
 	    return false; 
 	});
