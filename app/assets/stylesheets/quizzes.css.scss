@@ -266,7 +266,7 @@ body{
 	@extend .container-fluid;
 	width:50%;
 	height: 400px;
-	text-align:center;
+	
 	margin-top:20px;
 }
 #result-container{
@@ -285,12 +285,14 @@ body{
 #result-title-container{
 	@extend .col-md-12;
 	font-size: 25px;	
+	text-align:center;
 	margin-bottom: 5px;
 }
 
 #result-description-container{
 	@extend .col-md-7;
 	height: 240px;
+	text-align:justify;
 }
 #quiz-submit-button-container{
 
