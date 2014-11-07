@@ -4,14 +4,20 @@
 
 @import "bootstrap";
 
-body{
+html{
+	
 
 }
+body{
+	background: #00aa77;
+	background-image: asset-data-url("zenbg-1.png"), asset-data-url("zenbg-2.png");
+	background-repeat: repeat-x, repeat;
+}	
 
-.site-body{
-	margin-bottom: 20px;	
+.site-body{	
 }
 .site-content-container{
+	margin-bottom: 20px;
 	@extend .container;
 }
 .site-header-container {
@@ -30,6 +36,14 @@ body{
 .site-title{
 	font-family: 'Great Vibes', cursive;
 	font-size: 45px;
+	z-index: 1;
+}
+.site-link{
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0px !important;
+	z-index: 2;
 }
 .greeting{
 	@extend .col-md-1;
@@ -133,12 +147,12 @@ body{
 	text-align:center;
 	font-size: 30px;
 	margin: 20px;
-	@extend .card-shadow-light;
+	@extend .card-shadow;
 	background-color: #FFF;
 	padding : 10px 25px 10px 25px;
 }
 .question-list-container{
-	@extend .container;
+	@extend .container-fluid;
 }
 .question-container{
 	@extend .container-fluid;
@@ -185,7 +199,7 @@ body{
 	left: 0;
 	width: 100%;
 	height: 4px;
-	background: rgba(0,0,0,0.3);
+	background: #ffffff;
 	content: '';
 	opacity: 0;
 	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
@@ -208,7 +222,7 @@ body{
 	margin-top: 5px;
 	height: 4px;
 	width: 100%;
-	background: rgba(0,0,0,0.3);
+	background: #ffffff;
 	display: none;
 }
 .option-image{
@@ -252,6 +266,7 @@ body{
 	@extend .card-shadow-light;
 	padding: 15px;
 	opacity: 0;
+	background-color: white;
 }
 .result-row{
 	@extend .row;
@@ -274,8 +289,10 @@ body{
 }
 #quiz-submit-button{
 	@extend .btn;
-	@extend .btn-md;
+	@extend .btn-lg;
 	@extend .btn-default;
+	border-radius: 0px;
+	border-color: transparent;
 }
 #quiz-end-container{
 	width: 50%;
@@ -283,12 +300,25 @@ body{
 }
 .progress{
 	margin: 10px;
-	height: 5px !important;
+	height: 4px !important;
+	box-shadow: none;
+	background-color: transparent !important; 
+	border-radius: 0px !important;
+	display: none;
+	opacity: 0;
+}
+.progress-bar{
+	background-color: #fff !important;
+	box-shadow: none !important;
+	border-radius: 0px !important;
+
 }
 #view-more-quizzes-button{
 	@extend .btn;
 	@extend .btn-default;
 	@extend .btn-lg;
+	border-radius: 0px;
+	border-color: transparent;
 }
 #view-more-quizzes-button-container{
 	display: none;

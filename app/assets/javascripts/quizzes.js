@@ -9,7 +9,11 @@ $(document).ready(function() {
 	    // submit the form 
 	    $(this).ajaxSubmit({
 	    	beforeSend:function(){
-	    		$("#quiz-submit-button").css('visibility', 'hidden');
+	    		$("#quiz-submit-button").fadeTo("slow",0);
+	    		$("#quiz-submit-button").hide();
+	    		$(".progress").show();
+	    		$(".progress").fadeTo("slow",1);
+
 	    	},
 			xhr: function()
 			  {
