@@ -22,7 +22,7 @@
 													<div class = "option-selected-bar-holder"></div>
 													<%= image_tag option.content.url(:medium), alt: option.title, class: "option-image" %>
 													<div class = "curtain"></div>
-													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio">
+													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio required">
 													<div class = "option-selected-bar"></div>										
 												</div>
 											</div>
@@ -64,9 +64,10 @@
 				</div>
 			</div>
 		</div>
+		<div id="view-more-quizzes-button-container">
+			<%= link_to 'More Quizzes', root_url, id:"view-more-quizzes-button" %>	
+		</div>
 	</div>
 	
-	<div class="back-button-container">
-		<%= link_to 'Back', root_url, class:"back-button" %>	
-	</div>
+	
 </div>

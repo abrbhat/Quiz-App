@@ -1,8 +1,16 @@
+function showMoreQuizzesButton() {
+    $("#view-more-quizzes-button-container").show();
+	$("#view-more-quizzes-button-container").delay(3000).fadeTo("slow",1);
+    return null;          
+}
 $(document).ready(function() {
 	var option
 	$('#quiz-form').submit(function() { 
 	    // submit the form 
 	    $(this).ajaxSubmit({
+	    	beforeSend:function(){
+	    		$("#quiz-submit-button").css('visibility', 'hidden');
+	    	},
 			xhr: function()
 			  {
 			    var xhr = new window.XMLHttpRequest();
@@ -21,11 +29,9 @@ $(document).ready(function() {
 			      if (evt.lengthComputable) {
 			        var percentComplete = ((evt.loaded / evt.total) * 100).toString();
 			        //Do something with upload progress
-			        $(".progress-bar").attr("data-transitiongoal",percentComplete);
-			        $(".progress-bar").progressbar(); 
-			        //Do something with download progress
-			        console.log($(".progress-bar").data("transitiongoal"));
-			        console.log(percentComplete);
+			        $(".progress-bar").attr("data-transitiongoal",percentComplete);			        
+			        $('.progress-bar').progressbar();
+					//Do something with download progress
 			      }
 			    }, false);
 			    return xhr;
@@ -34,10 +40,11 @@ $(document).ready(function() {
 				alert('Oopsy!'); 				
 			},
 			success: function(data){	
-				$("#result-container").show();
+
 				$("#result-title").html(data["result_prefix"]+" "+data["title"]);
 				$("#result-description").html(data["description"]);
 				$("#result-image-container").html("<img src = "+ data["image_url"] +">");
+				
 			},
 	    }); 
 	    // return false to prevent normal browser submit and page navigation 
@@ -68,5 +75,15 @@ $(document).ready(function() {
 	      	$(this).find('.curtain').stop().fadeTo('slow', 0.1);  
 	   }	
 	});  
-	$('.progress .progress-bar').progressbar(); 
+	$('.progress-bar').progressbar({
+        update: function(current_percentage) { 
+	        if (current_percentage == 100){
+	    		$("#result-container").show();
+				$("#result-container").fadeTo("slow",1);
+				$("html, body").animate({ scrollTop: $(document).height() }, 1000);
+				showMoreQuizzesButton();				
+			}
+        }
+    });
 });
+

@@ -9,8 +9,7 @@ body{
 }
 
 .site-body{
-
-	
+	margin-bottom: 20px;	
 }
 .site-content-container{
 	@extend .container;
@@ -244,7 +243,7 @@ body{
 #result-placeholder{
 	@extend .container-fluid;
 	width:50%;
-	height: 350px;
+	height: 400px;
 	text-align:center;
 	margin-top:20px;
 }
@@ -252,6 +251,7 @@ body{
 	display:none;
 	@extend .card-shadow-light;
 	padding: 15px;
+	opacity: 0;
 }
 .result-row{
 	@extend .row;
@@ -269,6 +269,9 @@ body{
 	@extend .col-md-7;
 	height: 240px;
 }
+#quiz-submit-button-container{
+
+}
 #quiz-submit-button{
 	@extend .btn;
 	@extend .btn-md;
@@ -280,12 +283,16 @@ body{
 }
 .progress{
 	margin: 10px;
+	height: 5px !important;
 }
-.back-button{
+#view-more-quizzes-button{
 	@extend .btn;
 	@extend .btn-default;
+	@extend .btn-lg;
 }
-.back-button-container{
+#view-more-quizzes-button-container{
+	display: none;
+	opacity: 0;
 	text-align:center;
 	margin: 20px;
 }
