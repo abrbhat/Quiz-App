@@ -2,7 +2,6 @@ class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :list]
   def list
-    logger.debug "viewer:#{current_viewer.inspect}"
     @quizzes = Quiz.all
   end
   # GET /quizzes
@@ -78,6 +77,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:title, :view_count, :image, :description, :result_prefix)
+      params.require(:quiz).permit(:title, :view_count, :image, :description, :result_prefix, :status)
     end
 end

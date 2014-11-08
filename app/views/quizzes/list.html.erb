@@ -1,15 +1,17 @@
 <div class="main-quiz-list-container">
 	<% @quizzes.each do |quiz|%>
-		<a href = "/quizzes/<%= quiz.id %>">
-			<div class="listed-quiz-container">
-				<div class = "listed-quiz-image">
-					<%= image_tag quiz.image.url(:medium) %>
+		<% if quiz.status == 'live'%>
+			<a href = "/quizzes/<%= quiz.id %>">
+				<div class="listed-quiz-container">
+					<div class = "listed-quiz-image">
+						<%= image_tag quiz.image.url(:medium) %>
+					</div>
+					<div class = "listed-quiz-text">
+						<h2 class = "listed-quiz-title"><%= quiz.title %></h2>
+						<p><%= quiz.description %></p>
+					</div>			
 				</div>
-				<div class = "listed-quiz-text">
-					<h2 class = "listed-quiz-title"><%= quiz.title %></h2>
-					<p><%= quiz.description %></p>
-				</div>			
-			</div>
-		</a>
+			</a>
+		<% end %>
 	<% end %>
 </div>
