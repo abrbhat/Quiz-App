@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Option:</strong>
+  <%= @option_select_log.option_id %>
+</p>
+
+<p>
+  <strong>Viewer:</strong>
+  <%= @option_select_log.viewer_id %>
+</p>
+
+<%= link_to 'Edit', edit_option_select_log_path(@option_select_log) %> |
+<%= link_to 'Back', option_select_logs_path %>

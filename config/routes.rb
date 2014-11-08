@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :result_view_logs
+
+  resources :option_select_logs
+
+  resources :quiz_view_logs
+
   devise_for :users
   resources :results do
     get 'evaluate', on: :collection

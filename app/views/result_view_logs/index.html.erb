@@ -1,0 +1,27 @@
+<h1>Listing result_view_logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Result</th>
+      <th>Viewer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @result_view_logs.each do |result_view_log| %>
+      <tr>
+        <td><%= result_view_log.result_id %></td>
+        <td><%= result_view_log.viewer_id %></td>
+        <td><%= link_to 'Show', result_view_log %></td>
+        <td><%= link_to 'Edit', edit_result_view_log_path(result_view_log) %></td>
+        <td><%= link_to 'Destroy', result_view_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Result view log', new_result_view_log_path %>

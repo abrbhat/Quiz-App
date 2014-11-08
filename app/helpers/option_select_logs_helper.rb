@@ -1,0 +1,2 @@
+module OptionSelectLogsHelper
+end

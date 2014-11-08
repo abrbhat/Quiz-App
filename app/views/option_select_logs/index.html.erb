@@ -1,0 +1,27 @@
+<h1>Listing option_select_logs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Option</th>
+      <th>Viewer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @option_select_logs.each do |option_select_log| %>
+      <tr>
+        <td><%= option_select_log.option_id %></td>
+        <td><%= option_select_log.viewer_id %></td>
+        <td><%= link_to 'Show', option_select_log %></td>
+        <td><%= link_to 'Edit', edit_option_select_log_path(option_select_log) %></td>
+        <td><%= link_to 'Destroy', option_select_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Option select log', new_option_select_log_path %>

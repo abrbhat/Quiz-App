@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Result:</strong>
+  <%= @result_view_log.result_id %>
+</p>
+
+<p>
+  <strong>Viewer:</strong>
+  <%= @result_view_log.viewer_id %>
+</p>
+
+<%= link_to 'Edit', edit_result_view_log_path(@result_view_log) %> |
+<%= link_to 'Back', result_view_logs_path %>

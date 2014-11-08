@@ -1,0 +1,25 @@
+<%= form_for(@option_select_log) do |f| %>
+  <% if @option_select_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@option_select_log.errors.count, "error") %> prohibited this option_select_log from being saved:</h2>
+
+      <ul>
+      <% @option_select_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :option_id %><br>
+    <%= f.number_field :option_id %>
+  </div>
+  <div class="field">
+    <%= f.label :viewer_id %><br>
+    <%= f.number_field :viewer_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

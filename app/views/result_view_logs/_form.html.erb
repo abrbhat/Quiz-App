@@ -1,0 +1,25 @@
+<%= form_for(@result_view_log) do |f| %>
+  <% if @result_view_log.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@result_view_log.errors.count, "error") %> prohibited this result_view_log from being saved:</h2>
+
+      <ul>
+      <% @result_view_log.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :result_id %><br>
+    <%= f.number_field :result_id %>
+  </div>
+  <div class="field">
+    <%= f.label :viewer_id %><br>
+    <%= f.number_field :viewer_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
