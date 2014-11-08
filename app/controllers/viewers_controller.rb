@@ -1,5 +1,6 @@
 class ViewersController < ApplicationController
   before_action :set_viewer, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:create]
 
   # GET /viewers
   # GET /viewers.json
@@ -28,6 +29,7 @@ class ViewersController < ApplicationController
 
     respond_to do |format|
       if @viewer.save
+        session[:viewer_id] = @viewer.id
         format.html { redirect_to @viewer, notice: 'Viewer was successfully created.' }
         format.json { render :show, status: :created, location: @viewer }
       else

@@ -3,7 +3,7 @@
 <head>
   <title>QFash</title>
   <%= stylesheet_link_tag    'application', media: 'all' %>
-  <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Great+Vibes|Allura' rel='stylesheet' type='text/css'>
   <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
   <script>
@@ -16,27 +16,39 @@
 	  ga('require', 'displayfeatures');
 	  ga('require', 'linkid', 'linkid.js');
 	  ga('send', 'pageview');
-
 	</script>
 </head>
-<body class = "site-body">
-	<div class = "site-header-container">
-		<div class = "site-header">
-			<div class = "site-title-container">
-				<div class = "site-title">QFash</div>
+<body id = "site-body">
+	<div id = "site-header-container">
+		<div id = "site-header">
+			<div id = "site-title-container">
+				<div id = "site-title">QFash</div>
 				<a href = "/">
-					<div class = "site-link"></div>
+					<div id = "site-link"></div>
 				</a>
-			</div>
-			<div class = "greeting">
-				<div class = "named-greeting">
-					<div id = "name"></div> <% if user_signed_in? %><%= link_to "Sign Out", destroy_user_session_path, method: :delete %><% end %>
-				</div>
-			</div>
-			
-		</div>		
+			</div>			
+			<div id = "viewer-name-container">
+				<div id = "named-greeting">
+					<span id = "greeting-suffix">Hi</span>
+					<span id = "viewer-name"></span><span id = "greeting-prefix">!</span>			
+				</div>						
+				<div id = "enter-viewer-name-textbox-container">
+					<div id = "enter-viewer-name-textbox">
+						<%= form_tag(viewers_path(format: :json), method: "post", id: "viewer-name-form") do %>
+							<div id = "viewer-form-element-container">
+								<div class="form-group">
+							    	<input type="text" name="viewer[name]" id="viewer-name-input" placeholder="Your name is..">
+							  	</div>						  	
+							  	<button type="submit" id="viewer-name-submit-button">That's me!</button>
+							</div>
+						<% end %>
+					</div>
+				</div>		
+			</div>	
+			<% if user_signed_in? %><%= link_to "Sign Out", destroy_user_session_path, method: :delete %><% end %>		
+		</div>
 	</div>
-	<div class = "site-content-container">
+	<div id = "site-content-container">
 		<% if user_signed_in? %>
 				<div class = "navbar">			
 					<%= link_to "Quizzes", quizzes_path, class: "navigation-button" %>

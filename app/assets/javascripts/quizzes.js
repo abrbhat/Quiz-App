@@ -4,6 +4,13 @@ function showMoreQuizzesButton() {
     return null;          
 }
 $(document).ready(function() {
+	if ($.cookie("viewer_name")){
+		$("#named-greeting").show();
+		$("#viewer-name").html(jQuery.cookie("viewer_name"));
+	}
+	else{
+		$("#enter-viewer-name-textbox-container").show();
+	}
 	$('#quiz-form').submit(function() {
 		var submitme = true;
 		var nam, question;
@@ -66,8 +73,28 @@ $(document).ready(function() {
 		    }); 
 		}
 		else{
-			console.log("ggsdf");
 		}
+	    // return false to prevent normal browser submit and page navigation 
+	    return false; 
+	});
+	$('#viewer-name-form').submit(function() {
+		$(this).ajaxSubmit({
+	    	beforeSend:function(){
+	    		
+	    	},
+	    	error: function(){
+				alert('Oopsy!'); 				
+			},
+			success: function(data){	
+				var viewerName = data["name"];
+				var viewerId = data["id"];
+				$("#enter-viewer-name-textbox-container").hide();
+				$("#named-greeting").show();
+				$("#viewer-name").html(viewerName);
+				$.cookie('viewer_name', viewerName, { expires: 1000, path: '/' });
+				$.cookie('viewer_id', viewerId, { expires: 1000, path: '/' });
+			}
+	    }); 
 	    // return false to prevent normal browser submit and page navigation 
 	    return false; 
 	});

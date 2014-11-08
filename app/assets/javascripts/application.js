@@ -14,5 +14,6 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require jquery_form
+//= require jquery_cookie
 //= require bootstrap_progress_bar
 //= require_tree .

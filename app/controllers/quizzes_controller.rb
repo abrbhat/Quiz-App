@@ -2,6 +2,7 @@ class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :list]
   def list
+    logger.debug "viewer:#{current_viewer.inspect}"
     @quizzes = Quiz.all
   end
   # GET /quizzes
