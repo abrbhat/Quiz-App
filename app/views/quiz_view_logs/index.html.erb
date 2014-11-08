@@ -1,10 +1,11 @@
 <h1>Listing quiz_view_logs</h1>
 
-<table>
+<table class = "table">
   <thead>
     <tr>
       <th>Quiz</th>
       <th>Viewer</th>
+      <th>Status</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,8 +13,9 @@
   <tbody>
     <% @quiz_view_logs.each do |quiz_view_log| %>
       <tr>
-        <td><%= quiz_view_log.quiz_id %></td>
-        <td><%= quiz_view_log.viewer_id %></td>
+        <td><%= quiz_view_log.quiz.title %></td>
+        <td><%= quiz_view_log.viewer.name %></td>
+        <td><%= quiz_view_log.status %></td>
         <td><%= link_to 'Show', quiz_view_log %></td>
         <td><%= link_to 'Edit', edit_quiz_view_log_path(quiz_view_log) %></td>
         <td><%= link_to 'Destroy', quiz_view_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>

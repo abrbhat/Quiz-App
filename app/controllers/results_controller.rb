@@ -11,6 +11,7 @@ class ResultsController < ApplicationController
   # GET /results/1.json
   def show
     @quizzes = Quiz.all
+   
   end
 
   # GET /results/new
@@ -48,11 +49,20 @@ class ResultsController < ApplicationController
     results.each do |result|
       result_count[result.id] = 0
     end
+    if current_viewer
+        QuizViewLog.create(quiz_id: quiz.id, viewer_id: current_viewer.id, status: "submitted")
+    end
     selected_options.each do |question_id,option_id|
       selected_option = Option.find(option_id)
       result_count[selected_option.result_id] = result_count[selected_option.result_id] + 1
+      if current_viewer
+        OptionSelectLog.create(option_id: option_id, viewer_id: current_viewer.id)
+      end
     end
     result = Result.find(result_count.max_by{|k,v| v}.first)
+    if current_viewer
+        ResultViewLog.create(result_id: result.id, viewer_id: current_viewer.id)
+    end
     result_to_return = {"title"=> result.title,
                         "result_prefix" => quiz.result_prefix,
                         "description"=> result.description,
@@ -92,7 +102,7 @@ class ResultsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def result_params
+    def result_params 
       params.require(:result).permit(:title, :description, :viewings, :image, :quiz_id)
     end
 end

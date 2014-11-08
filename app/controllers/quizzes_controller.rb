@@ -16,6 +16,9 @@ class QuizzesController < ApplicationController
   def show
     @questions = @quiz.questions
     @results = @quiz.results
+    if current_viewer
+        QuizViewLog.create(quiz_id: @quiz.id, viewer_id: current_viewer.id, status: "viewed")
+    end
   end 
 
   # GET /quizzes/new

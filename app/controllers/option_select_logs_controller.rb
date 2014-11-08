@@ -3,16 +3,16 @@ class OptionSelectLogsController < ApplicationController
 
   def index
     @option_select_logs = OptionSelectLog.all
-    respond_with(@option_select_logs)
+    
   end
 
   def show
-    respond_with(@option_select_log)
+    
   end
 
   def new
     @option_select_log = OptionSelectLog.new
-    respond_with(@option_select_log)
+    
   end
 
   def edit
@@ -21,17 +21,17 @@ class OptionSelectLogsController < ApplicationController
   def create
     @option_select_log = OptionSelectLog.new(option_select_log_params)
     @option_select_log.save
-    respond_with(@option_select_log)
+    
   end
 
   def update
     @option_select_log.update(option_select_log_params)
-    respond_with(@option_select_log)
+    
   end
 
   def destroy
     @option_select_log.destroy
-    respond_with(@option_select_log)
+    
   end
 
   private
