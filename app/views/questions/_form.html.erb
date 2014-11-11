@@ -5,7 +5,10 @@
       <%= f.input :quiz,  :as => :select,      :collection => Quiz.all %>
     <% end %>
 
-    <%= f.inputs :name => "Options", :for => :options do |option_form| %>
+    <%= f.inputs :name => "Options", :for => :options do |option_form,i| %>
+      <% if @question.options[i-1].present? %>
+        <%= image_tag @question.options[i-1].content.url(:thumb), class: "formtastic-form-image" %>
+      <% end %>
       <%= option_form.input :title , :input_html => { :class => 'autogrow', :rows =>1, :maxlength => 20  } %>
       <%= option_form.input :result,  :as => :radio, :collection => @question.quiz.results, :wrapper_html => { :class => "formtastic-radio" } %>
       <%= option_form.input :content, :as => :file %>
