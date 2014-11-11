@@ -22,6 +22,11 @@ class QuestionsController < ApplicationController
   # GET /questions/1/edit
   def edit
     @quizzes = Quiz.all
+    options_left = 3 - @question.options.count    
+    options_left.times do
+      @question.options.build
+    end
+    
   end
 
   # POST /questions

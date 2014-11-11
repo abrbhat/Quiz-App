@@ -510,6 +510,18 @@ body{
 .col-bottom {
     vertical-align:bottom;
 }
+
+.store-info-card{
+	position:absolute;
+	top: 0px;
+	height:100%;
+	width: 100px;
+	background-color: white;
+	z-index: -4;
+	@extend .card-shadow-light;
+
+}
+/* Formtastic */
 form.formtastic fieldset > ol > li.radio fieldset ol li label input{
     position: relative;
 }

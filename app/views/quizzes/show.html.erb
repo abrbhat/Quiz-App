@@ -22,10 +22,19 @@
 													<div class = "option-selected-bar-holder"></div>
 													<%= image_tag option.content.url(:medium), alt: option.title, class: "option-image" %>
 													<div class = "curtain"></div>
-													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio">
+													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio"/>
 													<div class = "option-selected-bar"></div>										
-												</div>
+												</div>	
+												<div class = "store-info-card">
+													<div class="centering-table">
+									   					<div class="centering-table-cell">  	
+									   						<span class = "available-text">Available at:</span>
+															<span class = "store-name"><%= link_to option.store_link, option.store_name %></span>							
+									    	  			</div>
+									  				</div>																			
+												</div>											
 											</div>
+											
 										</div>
 									<% end %>
 								<% end %>

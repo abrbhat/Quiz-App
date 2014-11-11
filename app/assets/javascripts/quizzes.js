@@ -110,7 +110,9 @@ $(document).ready(function() {
 		$(this).find('.curtain').hide();
 		$(this).find('.option-selected-bar-holder').hide();
 		$(this).find('.option-selector-radio').prop("checked", true);
-	})
+		$(this).find('.store-info-card').animate({
+	   		left: "+=200px"},1500);
+	});
 	$('.curtain-container').hover(  
 	   function(){  
 	      $(this).find('.curtain').stop().fadeTo('slow', 0);  
@@ -121,8 +123,10 @@ $(document).ready(function() {
 	   else{
 	   		//If not selected then pull curtain down on mouseout
 	      	$(this).find('.curtain').stop().fadeTo('slow', 0.1);  
-	   }	
+	   }
+	  
 	});  
+
 	$('.progress-bar').progressbar({
         update: function(current_percentage) { 
 	        if (current_percentage == 100){

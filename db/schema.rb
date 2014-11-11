@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141108173142) do
+ActiveRecord::Schema.define(version: 20141111160826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,10 @@ ActiveRecord::Schema.define(version: 20141108173142) do
     t.integer  "content_file_size"
     t.datetime "content_updated_at"
     t.integer  "result_id"
+    t.boolean  "store_product"
+    t.text     "store_link"
+    t.string   "store_name"
+    t.string   "store_price"
   end
 
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree
