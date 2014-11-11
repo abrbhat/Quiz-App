@@ -5,14 +5,10 @@
       <%= f.input :status %>
       <%= f.input :description , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 60  } %>
       <%= f.input :result_prefix , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 60  }%>
-      <%= image_tag @quiz.image.url(:medium) %>
       <%= f.input :image, :as => :file %>
     <% end %>
 
-    <%= f.inputs :name => "Result", :for => :results do |result_form,i| %>
-      <% if @quiz.results[i-1].present? %>
-        <%= image_tag @quiz.results[i-1].image.url(:small) %>
-      <% end %>
+    <%= f.inputs :name => "Result", :for => :results do |result_form| %>
       <%= result_form.input :title , :input_html => { :class => 'autogrow', :rows =>1, :maxlength => 20  } %>
       <%= result_form.input :description , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 300  } %>
       <%= result_form.input :image, :as => :file %>

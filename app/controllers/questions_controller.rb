@@ -40,6 +40,13 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def complete_create_form
+    @question = Question.new
+    3.times do
+      @question.options.build
+    end
+  end
+
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
@@ -73,6 +80,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:title, :quiz_id, :view_count)
+      params.require(:question).permit(:title, :quiz_id, :view_count, :options_attributes => [:id, :title, :content, :result_id ])
     end
 end

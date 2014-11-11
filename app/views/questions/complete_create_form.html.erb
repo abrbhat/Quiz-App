@@ -7,7 +7,7 @@
 
     <%= f.inputs :name => "Options", :for => :options do |option_form| %>
       <%= option_form.input :title , :input_html => { :class => 'autogrow', :rows =>1, :maxlength => 20  } %>
-      <%= option_form.input :result,  :as => :radio, :collection => @question.quiz.results, :wrapper_html => { :class => "formtastic-radio" } %>
+      <%= option_form.input :result,  :as => :select,      :collection => Result.all %>
       <%= option_form.input :content, :as => :file %>
     <% end %>
 

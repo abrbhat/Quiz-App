@@ -20,6 +20,7 @@
     <%= f.label :description %><br>
     <%= f.text_area :description, :cols => "60", :rows => "4", class: "input-text-area" %>
   </div>
+  
   <select name="result[quiz_id]" class="input-select">
     <% @quizzes.each do |quiz|%>
       <option value="<%= quiz.id %>" <%= "selected" if quiz.id == @result.quiz_id %>><%= quiz.title %></option>

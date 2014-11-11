@@ -2,7 +2,7 @@ class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:show, :list]
   def list
-    @quizzes = Quiz.all
+    @quizzes = Quiz.all.reverse
   end
   # GET /quizzes
   # GET /quizzes.json
@@ -33,7 +33,8 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
-
+    logger.debug "result:#{params[:quiz][:result]}"
+    #@result = @quiz.result.build()
     respond_to do |format|
       if @quiz.save
         format.html { redirect_to quizzes_path, notice: 'Quiz was successfully created.' }
@@ -41,6 +42,48 @@ class QuizzesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def complete_create_form
+    @quiz = Quiz.new
+    3.times do
+      @quiz.results.build
+    end
+    5.times do
+      @quiz.questions.build
+    end
+  end
+
+  def complete_create
+    result_array = Array.new
+    @quiz = Quiz.new
+    @quiz.title = params[:quiz][:title]
+    @quiz.status = params[:quiz][:status]
+    @quiz.description = params[:quiz][:description]
+    @quiz.result_prefix = params[:quiz][:result_prefix]
+    @quiz.image = params[:quiz][:image]
+    @quiz.save
+    i = 1
+    params[:result].each do |result|
+      @result = Result.new (result)
+      @result.quiz_id = @quiz.id
+      @result.save
+      result_array[i] = @result_array
+      i = i + 1
+    end
+    params[:question].each do |question|
+      @question = Question.new
+      @question.title = question[:title]
+      @question.save
+      params[:option].each do |option|
+        @option = Option.new
+        @option.title = option[:description]
+        @option.content = option[:content]
+        @option.question_id = @question.id
+        @option.result_id = result_array[option[:result_order]]
+        @option.save
       end
     end
   end
@@ -77,6 +120,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:title, :view_count, :image, :description, :result_prefix,:status)
+      params.require(:quiz).permit(:title, :view_count, :image, :description, :result_prefix, :status, :results_attributes => [:id, :title, :description, :image ], :questions_attributes => [:id, :title])
     end
 end

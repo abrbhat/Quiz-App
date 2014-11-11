@@ -14,10 +14,13 @@ Rails.application.routes.draw do
 
   resources :options
 
-  resources :questions
+  resources :questions do
+    get 'complete_create_form', on: :collection
+  end
 
   resources :quizzes do
     get 'list', on: :collection
+    get 'complete_create_form', on: :collection
   end
 
   root 'quizzes#list'

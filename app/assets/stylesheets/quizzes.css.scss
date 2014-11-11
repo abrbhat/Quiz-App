@@ -13,7 +13,9 @@ body{
 	background-image: asset-data-url("zenbg-1.png"), asset-data-url("zenbg-2.png");
 	background-repeat: repeat-x, repeat;
 }	
-
+.half-width-container{
+	width:50%;
+}
 #site-body{	
 }
 #site-content-container{
@@ -507,4 +509,17 @@ body{
 }
 .col-bottom {
     vertical-align:bottom;
+}
+form.formtastic fieldset > ol > li.radio fieldset ol li label input{
+    position: relative;
+}
+form.formtastic fieldset > ol > li.radio fieldset > .label{
+   @extend .label;
+   position: relative;
+   text-align: left;
+}
+form.formtastic fieldset > ol > li.radio fieldset > .label > label{
+  padding-top: 5px;
+  margin-left: 40px;
+  font-weight: bold;
 }
