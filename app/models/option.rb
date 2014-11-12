@@ -5,4 +5,10 @@ class Option < ActiveRecord::Base
  	validates_attachment_content_type :content, :content_type => /\Aimage\/.*\Z/
  	has_many :option_select_logs
   	has_many :viewers, through: :option_select_logs
+
+  	
+
+  	def is_valid_store_product?
+      self.store_product and (self.store_product_expiry_date.blank? or self.store_product_expiry_date > Date.today) 
+    end
 end

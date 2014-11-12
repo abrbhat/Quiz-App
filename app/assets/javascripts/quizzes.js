@@ -110,7 +110,14 @@ $(document).ready(function() {
 		$(this).find('.curtain').hide();
 		$(this).find('.option-selected-bar-holder').hide();
 		$(this).find('.option-selector-radio').prop("checked", true);
-	})
+		var image_width = $(this).width();
+		if (!($(this).find('.store-info-card').data('visible'))) {
+			$(this).find('.store-info-card').animate({
+		   		left: "+="+image_width+"px"}, 1500);
+			$(this).find('.store-info-card').data('visible',true);
+		}
+			
+	});
 	$('.curtain-container').hover(  
 	   function(){  
 	      $(this).find('.curtain').stop().fadeTo('slow', 0);  
@@ -121,8 +128,10 @@ $(document).ready(function() {
 	   else{
 	   		//If not selected then pull curtain down on mouseout
 	      	$(this).find('.curtain').stop().fadeTo('slow', 0.1);  
-	   }	
+	   }
+	  
 	});  
+
 	$('.progress-bar').progressbar({
         update: function(current_percentage) { 
 	        if (current_percentage == 100){

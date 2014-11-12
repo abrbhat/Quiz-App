@@ -22,10 +22,26 @@
 													<div class = "option-selected-bar-holder"></div>
 													<%= image_tag option.content.url(:medium), alt: option.title, class: "option-image" %>
 													<div class = "curtain"></div>
-													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio">
+													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio"/>
 													<div class = "option-selected-bar"></div>										
-												</div>
+												</div>	
+												<% if option.is_valid_store_product? %>
+												<a class = "store-link" href = "<%= option.store_link %>" target = "_blank"> 
+													<div class = "store-info-card">												  
+								   						<div class = "store-info-text-container">		   							
+									   						<div class = "available-text">Available</br>at</div>
+															<div class = "store-name-container">
+																<div class = "store-name"><%= option.store_name %></div>
+															</div>				
+														</div>
+														<div class = "go-to-store-link-container">
+															<i class="fa fa-arrow-circle-right fa-1x"></i>				
+														</div>																		
+													</div>	
+												</a>
+												<% end %>											
 											</div>
+											
 										</div>
 									<% end %>
 								<% end %>
