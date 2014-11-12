@@ -139,7 +139,7 @@ body{
 .listed-quiz-title{	
 	font-size: 25px;
 	padding: 0.5em 0;
-	
+
 }
 
 .listed-quiz-container h2.listed-quiz-title-lg {
@@ -372,6 +372,7 @@ body{
 }
 #result-image-container{
 	@extend .col-md-5;
+	height: 240px;
 }
 #result-title-container{
 	@extend .col-md-12;

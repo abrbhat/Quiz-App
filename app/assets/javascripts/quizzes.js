@@ -68,7 +68,7 @@ $(document).ready(function() {
 
 					$("#result-title").html(data["result_prefix"]+" "+data["title"]);
 					$("#result-description").html(data["description"]);
-					$("#result-image-container").html("<img src = "+ data["image_url"] +">");
+					$("#result-image-container-cell").html("<img src = "+ data["image_url"] +">");
 					
 				},
 		    }); 
