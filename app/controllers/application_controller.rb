@@ -7,18 +7,23 @@ class ApplicationController < ActionController::Base
   Time.zone = 'Kolkata'
   
   private
- 
+
   def set_viewer_in_session
-  	if cookies[:viewer_id] && !session[:viewer_id]
-  		session[:viewer_id] = cookies[:viewer_id]
-  	end  
+    if cookies.signed[:viewer_secret] && !session[:viewer_secret]
+      session[:viewer_secret] = cookies.signed[:viewer_secret]
+    elsif !cookies[:viewer_secret]
+      viewer = Viewer.new
+      viewer.save
+      session[:viewer_secret] = viewer.secret
+      cookies.permanent.signed[:viewer_secret] = viewer.secret
+    end
   end
   
   def current_viewer
-  	if session[:viewer_id]
-  		viewer = Viewer.find_by(id: session[:viewer_id])
-  	elsif cookies[:viewer_id]
-  		viewer = Viewer.find_by(id: cookies[:viewer_id])
+  	if session[:viewer_secret]
+  		viewer = Viewer.find_by(secret: session[:viewer_secret])
+  	elsif cookies.signed[:viewer_secret]
+  		viewer = Viewer.find_by(secret: cookies.signed[:viewer_secret])
   	end   
   	return viewer   
   end

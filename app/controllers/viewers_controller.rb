@@ -25,11 +25,17 @@ class ViewersController < ApplicationController
   # POST /viewers
   # POST /viewers.json
   def create
-    @viewer = Viewer.new(viewer_params)
+    if current_viewer.present?   
+      @viewer = current_viewer   
+      @viewer.update(viewer_params)
+    else
+      @viewer = Viewer.new(viewer_params)
+    end
 
     respond_to do |format|
       if @viewer.save
-        session[:viewer_id] = @viewer.id
+        session[:viewer_secret] = @viewer.secret
+        cookies.permanent.signed[:viewer_secret] = @viewer.secret
         format.html { redirect_to @viewer, notice: 'Viewer was successfully created.' }
         format.json { render :show, status: :created, location: @viewer }
       else
@@ -71,6 +77,6 @@ class ViewersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def viewer_params
-      params.require(:viewer).permit(:name, :quizzes_viewed, :questions_viewed)
+      params.require(:viewer).permit(:name, :quizzes_viewed, :questions_viewed, :secret)
     end
 end

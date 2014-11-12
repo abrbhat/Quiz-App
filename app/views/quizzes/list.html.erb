@@ -7,8 +7,14 @@
 						<%= image_tag quiz.image.url(:medium) %>
 					</div>
 					<div class = "listed-quiz-text">
-						<h2 class = "listed-quiz-title"><%= quiz.title %></h2>
-						<p><%= quiz.description %></p>
+						<h2 class = "listed-quiz-title listed-quiz-title-lg"><%= quiz.title %></h2>
+						<h2 class = "listed-quiz-title listed-quiz-title-sm"><%= quiz.title %></h2>
+						<div class = "listed-quiz-description-lg-container">
+							<p class = "listed-quiz-description-lg"><%= quiz.description %></p>
+						</div>
+						<div class = "listed-quiz-description-sm-container">
+							<p class = "listed-quiz-description-sm"><%= quiz.description %></p>
+						</div>
 					</div>			
 				</div>
 			</a>

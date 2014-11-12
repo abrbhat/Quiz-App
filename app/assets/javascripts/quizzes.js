@@ -11,6 +11,7 @@ $(document).ready(function() {
 	else{
 		$("#enter-viewer-name-textbox-container").show();
 	}
+
 	$('#quiz-form').submit(function() {
 		var submitme = true;
 		var nam, question;
@@ -87,12 +88,10 @@ $(document).ready(function() {
 			},
 			success: function(data){	
 				var viewerName = data["name"];
-				var viewerId = data["id"];
 				$("#enter-viewer-name-textbox-container").hide();
 				$("#named-greeting").show();
 				$("#viewer-name").html(viewerName);
 				$.cookie('viewer_name', viewerName, { expires: 1000, path: '/' });
-				$.cookie('viewer_id', viewerId, { expires: 1000, path: '/' });
 			}
 	    }); 
 	    // return false to prevent normal browser submit and page navigation 
@@ -118,7 +117,7 @@ $(document).ready(function() {
 		}
 			
 	});
-	$('.curtain-container').hover(  
+	$('.option-card').hover(  
 	   function(){  
 	      $(this).find('.curtain').stop().fadeTo('slow', 0);  
 	   },  

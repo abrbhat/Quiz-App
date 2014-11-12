@@ -123,13 +123,16 @@ body{
 	margin:0 auto;
 	background: white;
 	@extend .card-shadow;
+	min-width: 260px;
 }
 .listed-quiz-image{
-	@extend .col-md-4;
+	@extend .col-md-3;
 	padding-left: 0px;
+	text-align: center;
 }
 .listed-quiz-text{
 	@extend .col-md-8;
+	@extend .col-md-offset-1;
 	height:195px;
 	text-align: center;
 }
@@ -138,7 +141,9 @@ body{
 	padding: 0.5em 0;
 }
 
-.listed-quiz-container h2 {
+.listed-quiz-container h2.listed-quiz-title-lg {
+	@extend .visible-md-block;
+	@extend .visible-lg-block;
 
 	-webkit-transition: -webkit-transform 0.35s;
 	-webkit-transform: translate3d(0,-50%,0) translate3d(0,150%,0);
@@ -147,12 +152,20 @@ body{
 	transform: translate3d(0,-50%,0) translate3d(0,150%,0);
 }
 
-.listed-quiz-container:hover h2{	
+.listed-quiz-container:hover h2.listed-quiz-title-lg{	
 	-webkit-transform: translate3d(0,-50%,0) translate3d(0,100%,0);
 	transform: translate3d(0,-50%,0) translate3d(0,100%,0);
 }
 
-.listed-quiz-container p {
+.listed-quiz-container h2.listed-quiz-title-sm {
+	@extend .visible-xs-block;
+	@extend .visible-sm-block;
+	text-decoration: none;
+}
+
+.listed-quiz-container p.listed-quiz-description-lg {
+	@extend .visible-md-block;
+	@extend .visible-lg-block;
 	top: 50%;
 	left: 0;
 	width: 100%;
@@ -167,7 +180,7 @@ body{
 	transition: opacity 0.35s, transform 0.35s;
 }
 
-.listed-quiz-container:hover p {
+.listed-quiz-container:hover p.listed-quiz-description-lg{
 	opacity: 1;
 
 	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
@@ -175,6 +188,10 @@ body{
 
 	transition: opacity 0.35s, transform 0.35s;	
 	transform: translate3d(0,-50%,0) translate3d(0,100%,0);
+}
+.listed-quiz-container p.listed-quiz-description-sm{
+	@extend .visible-xs-block;
+	@extend .visible-sm-block;
 }
 .centering-table{
   display: table; 
@@ -239,7 +256,7 @@ body{
 	height: 100%;
 	width: 100%;
 	top: 0px;
-	z-index: 4;
+	z-index: 5;
 	background-color: transparent;
 }
 .option-selected-bar-holder:hover{
@@ -322,7 +339,7 @@ body{
 	opacity: 0.1;
 	background-color: black;
 	/* transition: opacity 0.35s, transform 0.35s; */
-	z-index: 5;
+	z-index: 4;
 }
 .curtain:hover{
 
