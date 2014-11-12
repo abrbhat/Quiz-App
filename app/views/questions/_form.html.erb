@@ -12,6 +12,12 @@
       <%= option_form.input :title , :input_html => { :class => 'autogrow', :rows =>1, :maxlength => 20  } %>
       <%= option_form.input :result,  :as => :radio, :collection => @question.quiz.results, :wrapper_html => { :class => "formtastic-radio" } %>
       <%= option_form.input :content, :as => :file %>
+      <%= option_form.input :store_product %>
+      <%= option_form.input :store_name %>
+      <%= option_form.input :store_link, :input_html => { :class => 'autogrow', :rows =>1 } %>
+      <%= option_form.input :store_price %>
+      <%= option_form.input :store_product_expiry_date %>
+
     <% end %>
 
     <%= f.actions do %>

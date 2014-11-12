@@ -230,7 +230,7 @@ body{
 
 }
 .option-card{
-	@extend .card-shadow-light;
+	
 	display: inline-block;
 	cursor: pointer;
 }
@@ -239,7 +239,7 @@ body{
 	height: 100%;
 	width: 100%;
 	top: 0px;
-	z-index: 1;
+	z-index: 4;
 	background-color: transparent;
 }
 .option-selected-bar-holder:hover{
@@ -279,9 +279,38 @@ body{
 }
 .option-image{
 	position:relative;
-	z-index: -3;
+	z-index: 2;
+	@extend .card-shadow-light;
 }
+.store-info-card{
+	position:absolute;
+	top: 0px;
+	height:100%;
+	width: 100px;
+	background-color: white;
+	z-index: 1;
+	color: black;
+	padding: 10px 5px 0px 5px;
+	@extend .card-shadow-light;
 
+}
+.store-info-text-container{
+	height: 75%;
+}
+.store-name-container{
+	height:50%;
+	position: relative;
+}
+.store-name{
+	position: absolute;
+	bottom: 0px;
+	text-align: center;
+	width: 100%;
+}
+.available-text{
+	font-family: "Allura",cursive;
+	font-size: 20px;
+}
 .curtain-container{
 	position:relative;
 }
@@ -293,14 +322,10 @@ body{
 	opacity: 0.1;
 	background-color: black;
 	/* transition: opacity 0.35s, transform 0.35s; */
-	z-index: 0;
+	z-index: 5;
 }
 .curtain:hover{
-	/*
-	opacity: 0;
-	-webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
-	transition: opacity 0.35s, transform 0.35s;	
-	*/
+
 }
 .option-selector-radio{
 	position:absolute;
@@ -511,16 +536,6 @@ body{
     vertical-align:bottom;
 }
 
-.store-info-card{
-	position:absolute;
-	top: 0px;
-	height:100%;
-	width: 100px;
-	background-color: white;
-	z-index: -4;
-	@extend .card-shadow-light;
-
-}
 /* Formtastic */
 form.formtastic fieldset > ol > li.radio fieldset ol li label input{
     position: relative;
@@ -531,6 +546,17 @@ form.formtastic fieldset > ol > li.radio fieldset > .label{
    text-align: left;
 }
 form.formtastic fieldset > ol > li.radio fieldset > .label > label{
+  padding-top: 5px;
+  margin-left: 40px;
+  font-weight: bold;
+}
+form.formtastic fieldset > ol > li.date_select fieldset > .label{
+   @extend .label;
+   position: relative;
+   text-align: left;
+   height: 20px;
+}
+form.formtastic fieldset > ol > li.date_select fieldset > .label > label{
   padding-top: 5px;
   margin-left: 40px;
   font-weight: bold;

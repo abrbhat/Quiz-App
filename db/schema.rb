@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141111160826) do
+ActiveRecord::Schema.define(version: 20141112133827) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20141111160826) do
     t.text     "store_link"
     t.string   "store_name"
     t.string   "store_price"
+    t.date     "store_product_expiry_date"
   end
 
   add_index "options", ["question_id"], name: "index_options_on_question_id", using: :btree

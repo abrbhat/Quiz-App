@@ -110,8 +110,13 @@ $(document).ready(function() {
 		$(this).find('.curtain').hide();
 		$(this).find('.option-selected-bar-holder').hide();
 		$(this).find('.option-selector-radio').prop("checked", true);
-		$(this).find('.store-info-card').animate({
-	   		left: "+=200px"},1500);
+		var image_width = $(this).width();
+		if (!($(this).find('.store-info-card').data('visible'))) {
+			$(this).find('.store-info-card').animate({
+		   		left: "+="+image_width+"px"}, 1500);
+			$(this).find('.store-info-card').data('visible',true);
+		}
+			
 	});
 	$('.curtain-container').hover(  
 	   function(){  

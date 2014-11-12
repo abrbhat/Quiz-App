@@ -4,6 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :set_viewer_in_session
+  Time.zone = 'Kolkata'
+  
   private
  
   def set_viewer_in_session

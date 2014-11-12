@@ -25,14 +25,21 @@
 													<input type="radio" name="option_selected[<%= question.id %>]" value="<%= option.id %>" class = "option-selector-radio"/>
 													<div class = "option-selected-bar"></div>										
 												</div>	
-												<div class = "store-info-card">
-													<div class="centering-table">
-									   					<div class="centering-table-cell">  	
-									   						<span class = "available-text">Available at:</span>
-															<span class = "store-name"><%= link_to option.store_link, option.store_name %></span>							
-									    	  			</div>
-									  				</div>																			
-												</div>											
+												<% if option.is_valid_store_product? %>
+												<a class = "store-link" href = "<%= option.store_link %>" target = "_blank"> 
+													<div class = "store-info-card">												  
+								   						<div class = "store-info-text-container">		   							
+									   						<div class = "available-text">Available</br>at</div>
+															<div class = "store-name-container">
+																<div class = "store-name"><%= option.store_name %></div>
+															</div>				
+														</div>
+														<div class = "go-to-store-link-container">
+															<i class="fa fa-arrow-circle-right fa-1x"></i>				
+														</div>																		
+													</div>	
+												</a>
+												<% end %>											
 											</div>
 											
 										</div>

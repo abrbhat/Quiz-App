@@ -12,9 +12,11 @@
  *
  *= require_tree .
  *= require formtastic
- 
+ *= require font-awesome
  *= require_self
  */
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";

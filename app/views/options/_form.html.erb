@@ -28,6 +28,8 @@
     <% end %>
   </select>
   <br>
+
+  <%= image_tag @option.content.url(:thumb) %>
   <div class="field">
     <%= f.file_field :content %>
   </div>
@@ -51,6 +53,11 @@
   <div class="field">
     <%= f.label :store_price %><br>
     <%= f.text_field :store_price %>
+  </div>
+
+  <div class="field">
+    <%= f.label :store_product_expiry_date %><br>
+    <%= f.date_select :store_product_expiry_date %>
   </div>
   
   <div class="actions">

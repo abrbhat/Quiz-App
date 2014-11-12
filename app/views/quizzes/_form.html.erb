@@ -3,7 +3,7 @@
     <%= f.inputs :name => "Quiz" do %>
       <%= f.input :title , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 60  } %>
       <%= f.input :status %>
-      <%= f.input :description , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 60  } %>
+      <%= f.input :description , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 150  } %>
       <%= f.input :result_prefix , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 60  }%>
       <%= image_tag @quiz.image.url(:medium), class: "formtastic-form-image" %>
       <%= f.input :image, :as => :file %>
