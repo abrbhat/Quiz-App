@@ -6,6 +6,7 @@
       <th>Quiz</th>
       <th>Viewer</th>
       <th>Status</th>
+      <th>Time</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,6 +17,7 @@
         <td><%= quiz_view_log.quiz.title %></td>
         <td><%= quiz_view_log.viewer.name %></td>
         <td><%= quiz_view_log.status %></td>
+        <td><%= quiz_view_log.created_at.strftime("%I:%M%p %d/%m/%Y") if quiz_view_log.created_at.present? %></td>
         <td><%= link_to 'Show', quiz_view_log %></td>
         <td><%= link_to 'Edit', edit_quiz_view_log_path(quiz_view_log) %></td>
         <td><%= link_to 'Destroy', quiz_view_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>

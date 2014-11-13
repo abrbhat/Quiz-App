@@ -3,8 +3,9 @@
 <table class = "table">
   <thead>
     <tr>
-      <th>Result</th>
       <th>Viewer</th>
+      <th>Quiz</th>
+      <th>Result</th>      
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -12,8 +13,9 @@
   <tbody>
     <% @result_view_logs.each do |result_view_log| %>
       <tr>
-        <td><%= result_view_log.result.title %></td>
         <td><%= result_view_log.viewer.name %></td>
+        <td><%= result_view_log.result.quiz.title %></td>
+        <td><%= result_view_log.result.title %></td>        
         <td><%= link_to 'Show', result_view_log %></td>
         <td><%= link_to 'Edit', edit_result_view_log_path(result_view_log) %></td>
         <td><%= link_to 'Destroy', result_view_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>

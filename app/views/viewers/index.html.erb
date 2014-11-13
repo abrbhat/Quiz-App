@@ -6,7 +6,7 @@
       <th>Name</th>
       <th>Secret</th>
       <th>Quizzes viewed</th>
-      <th>Questions viewed</th>
+      <th>Last quiz view at</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,8 +16,8 @@
       <tr>
         <td><%= viewer.name %></td>
         <td><%= viewer.secret %></td>
-        <td><%= viewer.quizzes_viewed %></td>
-        <td><%= viewer.questions_viewed %></td>
+        <td><%= viewer.quiz_view_logs.select(:quiz_id).uniq.count %></td>
+        <td><%= viewer.quiz_view_logs.order(:created_at).last.created_at.strftime("%I:%M%p %d/%m/%Y") if viewer.quiz_view_logs.present? %></td>
         <td><%= link_to 'Show', viewer %></td>
         <td><%= link_to 'Edit', edit_viewer_path(viewer) %></td>
         <td><%= link_to 'Destroy', viewer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
