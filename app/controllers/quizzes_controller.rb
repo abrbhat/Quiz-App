@@ -33,7 +33,6 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
-    logger.debug "result:#{params[:quiz][:result]}"
     #@result = @quiz.result.build()
     respond_to do |format|
       if @quiz.save
@@ -51,40 +50,8 @@ class QuizzesController < ApplicationController
     3.times do
       @quiz.results.build
     end
-    5.times do
+    7.times do
       @quiz.questions.build
-    end
-  end
-
-  def complete_create
-    result_array = Array.new
-    @quiz = Quiz.new
-    @quiz.title = params[:quiz][:title]
-    @quiz.status = params[:quiz][:status]
-    @quiz.description = params[:quiz][:description]
-    @quiz.result_prefix = params[:quiz][:result_prefix]
-    @quiz.image = params[:quiz][:image]
-    @quiz.save
-    i = 1
-    params[:result].each do |result|
-      @result = Result.new (result)
-      @result.quiz_id = @quiz.id
-      @result.save
-      result_array[i] = @result_array
-      i = i + 1
-    end
-    params[:question].each do |question|
-      @question = Question.new
-      @question.title = question[:title]
-      @question.save
-      params[:option].each do |option|
-        @option = Option.new
-        @option.title = option[:description]
-        @option.content = option[:content]
-        @option.question_id = @question.id
-        @option.result_id = result_array[option[:result_order]]
-        @option.save
-      end
     end
   end
 
