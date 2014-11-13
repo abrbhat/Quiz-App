@@ -18,6 +18,10 @@ class QuizzesController < ApplicationController
     if current_viewer
         QuizViewLog.create(quiz_id: @quiz.id, viewer_id: current_viewer.id, status: "viewed")
     end
+    unless @quiz.is_live? or (@quiz.is_preview? and user_signed_in?)
+      render text: "Nothing here"
+    end
+
   end 
 
   # GET /quizzes/new

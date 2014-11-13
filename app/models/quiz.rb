@@ -9,4 +9,12 @@ class Quiz < ActiveRecord::Base
 	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 	has_many :quiz_view_logs
   	has_many :viewers, through: :quiz_view_logs
+
+  	def is_live?
+  		self.status == 'live'
+  	end
+
+  	def is_preview?
+  		self.status == 'preview'
+  	end
 end
