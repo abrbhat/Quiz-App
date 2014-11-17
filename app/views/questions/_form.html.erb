@@ -10,7 +10,7 @@
         <%= image_tag @question.options[i-1].content.url(:thumb), class: "formtastic-form-image" %>
       <% end %>
       <%= option_form.input :title , :input_html => { :class => 'autogrow', :rows =>1, :maxlength => 20  } %>
-      <%= option_form.input :result,  :as => :radio, :collection => @question.quiz.results, :wrapper_html => { :class => "formtastic-radio" } %>
+      <%= option_form.input :result,  :as => :radio, :collection => @question.quiz.results, :wrapper_html => { :class => "formtastic-radio" } if @question.quiz.present? %>
       <%= option_form.input :content, :as => :file %>
       <%= option_form.input :store_product %>
       <%= option_form.input :store_name %>
