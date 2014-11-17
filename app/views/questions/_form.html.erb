@@ -1,7 +1,7 @@
 <div class = "half-width-container">
   <%= semantic_form_for @question do |f| %>
     <%= f.inputs :name => "Question" do %>
-      <%= f.input :title , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 60  } %>
+      <%= f.input :title , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 150  } %>
       <%= f.input :quiz,  :as => :select,      :collection => Quiz.all %>
     <% end %>
 

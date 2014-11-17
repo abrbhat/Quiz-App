@@ -14,12 +14,12 @@
         <%= image_tag @quiz.results[i-1].image.url(:small), class: "formtastic-form-image" %>
       <% end %>
       <%= result_form.input :title , :input_html => { :class => 'autogrow', :rows =>1, :maxlength => 20  } %>
-      <%= result_form.input :description , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 300  } %>
+      <%= result_form.input :description , :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 450  } %>
       <%= result_form.input :image, :as => :file %>
     <% end %>
 
     <%= f.inputs :name => "Question", :for => :questions do |question_form| %>
-      <%= question_form.input :title, :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 60  } %>
+      <%= question_form.input :title, :input_html => { :class => 'autogrow', :rows =>4, :maxlength => 150  } %>
     <% end %>
 
     <%= f.actions do %>
