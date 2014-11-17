@@ -7,7 +7,7 @@
 
 <p>
   <strong>Quiz:</strong>
-  <%= @question.quiz.title %>
+  <%= @question.quiz.title if @question.quiz.present? %>
 </p>
 
 <p>
