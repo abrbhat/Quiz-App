@@ -1,5 +1,6 @@
 class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  before_action :check_if_new_viewer, only:[:show]
   skip_before_action :authenticate_user!, only: [:show, :list]
   def list
     @quizzes = Quiz.all.reverse
@@ -92,5 +93,14 @@ class QuizzesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
       params.require(:quiz).permit(:title, :view_count, :image, :description, :result_prefix, :status, :results_attributes => [:id, :title, :description, :image ], :questions_attributes => [:id, :title])
+    end
+
+    def check_if_new_viewer
+      if !cookies[:viewer_secret]
+        viewer = Viewer.new
+        viewer.save
+        session[:viewer_secret] = viewer.secret
+        cookies.permanent.signed[:viewer_secret] = viewer.secret
+      end
     end
 end

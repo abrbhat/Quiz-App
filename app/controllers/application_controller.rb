@@ -10,12 +10,7 @@ class ApplicationController < ActionController::Base
 
   def set_viewer_in_session
     if cookies.signed[:viewer_secret] && !session[:viewer_secret]
-      session[:viewer_secret] = cookies.signed[:viewer_secret]
-    elsif !cookies[:viewer_secret]
-      viewer = Viewer.new
-      viewer.save
-      session[:viewer_secret] = viewer.secret
-      cookies.permanent.signed[:viewer_secret] = viewer.secret
+      session[:viewer_secret] = cookies.signed[:viewer_secret]    
     end
   end
   
