@@ -4,4 +4,4 @@ This app provides a generic structure of a Buzzfeed Quizzes type of app.
 
 ## License
 
-Manaple Attendance Management App is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+Quiz-App is released under the [MIT License](http://www.opensource.org/licenses/MIT).
